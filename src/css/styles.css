@@ -1,0 +1,86 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body {
+    width:100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(17, 17, 36);
+}
+
+#container {
+    width: 350px;
+    background-color:rgb(31, 31, 56);
+    padding:30px 25px;
+}
+
+.campo_input, .grupo_botoes {
+    /* border:1px solid red; */
+    margin-bottom:20px;
+}
+
+h2, label, button {
+    color:white;
+}
+
+h2 {
+    margin-bottom:30px;
+    text-align: center;
+}
+
+
+label {
+    display: block;
+    margin-bottom:8px;
+}
+
+input {
+    width:100%;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:4px;
+}
+
+.grupo_botoes {
+    margin-top:40px;
+    display: flex;
+    gap:20px;
+}
+
+button {
+    flex:auto;
+    padding:18px;
+    border:none;
+    border-radius:4px;
+    font-size:0.9rem;
+    cursor: pointer;
+}
+
+#btn_calcular {
+    background-color:tomato;
+}
+
+#btn_reset {
+    background-color: rgb(79, 75, 75)
+}
+
+button#btn_calcular:hover{
+    animation: Popover .5s ease-in infinite;
+}
+
+/* button#btn_reset:hover {
+    transform: scale(0.95);
+} */
+
+@keyframes Popover {
+    to {
+        transform: scale(1.04);
+    }
+}
