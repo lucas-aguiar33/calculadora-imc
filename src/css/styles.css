@@ -12,24 +12,22 @@ body {
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(17, 17, 36);
+    gap:10px;
 }
 
-#container {
+#container, #container_result {
     width: 350px;
     background-color:rgb(31, 31, 56);
     padding:30px 25px;
-}
-
-.campo_input, .grupo_botoes {
-    /* border:1px solid red; */
-    margin-bottom:20px;
-}
-
-h2, label, button {
     color:white;
 }
 
+.campo_input, .grupo_botoes {
+    margin-bottom:20px;
+}
+
 h2 {
+    font-size:2rem;
     margin-bottom:30px;
     text-align: center;
 }
@@ -59,8 +57,9 @@ button {
     padding:18px;
     border:none;
     border-radius:4px;
-    font-size:0.9rem;
+    font-size:1rem;
     cursor: pointer;
+    color:white;
 }
 
 #btn_calcular {
@@ -75,6 +74,46 @@ button {
 button#btn_calcular:hover{
     animation: Popover .5s ease-in infinite;
 }
+
+#container_result {
+    width:auto;
+}
+
+#container_result h2, p{
+    margin-bottom:20px;
+    text-align: center;
+}
+
+p {
+    font-size:1.2rem;
+}
+
+table > caption {
+    margin:15px 0;
+}
+
+table {
+    padding:10px;
+    font-size:0.9rem;
+}
+
+td {
+   border-top:1px solid rgb(186, 216, 227); 
+   font-size:0.9rem;
+   padding:5px;
+   text-align: center;
+}
+
+
+#btn_voltar {
+    background-color:tomato;
+    width:35%;
+    margin-top:40px;
+    position:relative;
+    left:30%;
+}
+
+
 
 @keyframes Popover {
     to {
