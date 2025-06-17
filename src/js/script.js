@@ -1,13 +1,15 @@
 const button_calcular = document.querySelector("#btn_calcular");
 const button_reset = document.getElementById("btn_reset");
+const button_voltar = document.querySelector("#btn_voltar");
 const input_altura = document.getElementById("f_altura");
 const input_peso = document.getElementById("f_peso");
 const resultado_imc = document.querySelector("#resultado_imc");
 const res_imc = document.querySelector("#resultado_imc");
 const p_situacaoAtual = document.querySelector("#situacao");
+const msg_erro = document.querySelector("#erro");
 
 
-
+// EFEITOS DOS BOTÕES
 button_reset.onmousedown = function(){
     button_reset.style.transform = 'scale(0.95)';
 }
@@ -20,6 +22,34 @@ button_reset.onmouseleave = function() {
     button_reset.style.transform = 'scale(1)';
 }
 
+
+button_calcular.onmousedown = function(){
+    button_calcular.style.transform = 'scale(0.95)';
+}
+
+button_calcular.onmouseup = function() {
+    button_calcular.style.transform = 'scale(1)';
+}
+
+button_calcular.onmouseleave = function() {
+    button_calcular.style.transform = 'scale(1)';
+}
+
+
+button_voltar.onmousedown = function(){
+    button_voltar.style.transform = 'scale(0.95)';
+}
+
+button_voltar.onmouseup = function() {
+    button_voltar.style.transform = 'scale(1)';
+}
+
+button_voltar.onmouseleave = function() {
+    button_voltar.style.transform = 'scale(1)';
+}
+
+
+// FUNÇÕES 
 
 const calcularIMC = (a, p) => {
     const imc = p / a**a;
@@ -57,19 +87,24 @@ const resultado = (callback) => {
     situacao.toLowerCase();
     switch(situacao){
         case 'magreza':
-            p_situacaoAtual.innerHTML += situacao;
+            p_situacaoAtual.innerHTML = sit;
+            p_situacaoAtual.style.color = 'red';
             break;
         case 'normal':
-            p_situacaoAtual.innerHTML += situacao;
+            p_situacaoAtual.innerHTML = sit;
+            p_situacaoAtual.style.color = 'green';
             break;
         case 'sobrepeso':
-            p_situacaoAtual.innerHTML += situacao;
+            p_situacaoAtual.innerHTML = sit;
+            p_situacaoAtual.style.color = 'orange';
             break;
         case 'obesidade':
-            p_situacaoAtual.innerHTML += situacao;
+            p_situacaoAtual.innerHTML = sit;
+            p_situacaoAtual.style.color = 'darkorange';
             break;
         case 'obesidade grave':
-            p_situacaoAtual.innerHTML += situacao;
+            p_situacaoAtual.innerHTML += sit;
+            p_situacaoAtual.style.color = 'yellow';
             break;
         default:
             p_situacaoAtual.innerHTML += 'Algo deu errado';
@@ -80,9 +115,23 @@ const resultado = (callback) => {
 button_calcular.addEventListener("click",()=>{
     const altura = Number(input_altura.value);
     const peso = Number(input_peso.value);
-    resultado(calcularIMC(altura, peso));
-    input_altura.value = "";
-    input_peso.value = "";
-    
 
+    if((altura < 0 || altura === 0 || altura === null || altura === undefined) || (peso < 0 || peso === 0 || peso === null || peso === undefined)){
+        msg_erro.innerHTML = 'Informe valores válidos para os campos';
+        // msg_erro.style.fontWeight = 'bold';
+        msg_erro.style.display = 'block';
+        msg_erro.style.animation = 'Popover .8s ease-in infinite';
+
+        setTimeout(()=>{
+            msg_erro.style.display = 'none';
+            input_altura.value = "";
+            input_peso.value = "";
+        }, 5000)
+
+    } else {
+        resultado(calcularIMC(altura, peso));
+        input_altura.value = "";
+        input_peso.value = "";  
+    }
+    
 });
