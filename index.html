@@ -8,17 +8,17 @@
 </head>
 <body>
     
-    <div id="container">
+    <div id="container" class="show">
         <h2>Calculadora de IMC</h2>
         
         <div class="campo_input">
             <label for="f_altura">Altura:</label>
-            <input type="text" name="altura" id="f_altura">
+            <input type="text" name="altura" id="f_altura" placeholder="exemplo: 180">
         </div>
 
         <div class="campo_input">
             <label for="f_peso">Peso:</label>
-            <input type="text" name="peso" id="f_peso">
+            <input type="text" name="peso" id="f_peso" placeholder="exemplo: 80.5">
         </div>
 
         <div id="erro">
@@ -30,9 +30,9 @@
         </div>
     </div>
 
-    <div id="container_result">
+    <div id="container_result" class="hide">
        <div id="resultado">
-        <h2 id="resultado_imc">Seu IMC: </h2>
+        <h2>Seu IMC: <span id="resultado_imc"></span> </h2>
         <p>Situação atual: <span id="situacao"></span> </p>
        </div>
        <table>

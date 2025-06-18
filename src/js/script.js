@@ -7,6 +7,8 @@ const resultado_imc = document.querySelector("#resultado_imc");
 const res_imc = document.querySelector("#resultado_imc");
 const p_situacaoAtual = document.querySelector("#situacao");
 const msg_erro = document.querySelector("#erro");
+const container_calculadora = document.querySelector("#container");
+const container_resultado = document.querySelector("#container_result");
 
 
 // EFEITOS DOS BOTÕES
@@ -87,22 +89,27 @@ const resultado = (callback) => {
     situacao.toLowerCase();
     switch(situacao){
         case 'magreza':
+            resultado_imc.style.color = 'red';
             p_situacaoAtual.innerHTML = sit;
             p_situacaoAtual.style.color = 'red';
             break;
         case 'normal':
+            resultado_imc.style.color = 'green';
             p_situacaoAtual.innerHTML = sit;
             p_situacaoAtual.style.color = 'green';
             break;
         case 'sobrepeso':
+            resultado_imc.style.color = 'orange';
             p_situacaoAtual.innerHTML = sit;
             p_situacaoAtual.style.color = 'orange';
             break;
         case 'obesidade':
+            resultado_imc.style.color = 'darkorange';
             p_situacaoAtual.innerHTML = sit;
             p_situacaoAtual.style.color = 'darkorange';
             break;
         case 'obesidade grave':
+            resultado_imc.style.color = 'yellow';
             p_situacaoAtual.innerHTML += sit;
             p_situacaoAtual.style.color = 'yellow';
             break;
@@ -113,32 +120,36 @@ const resultado = (callback) => {
 }
 
 function refreshPage(){
-    setTimeout(()=>{
-        window.location.reload();
-    }, 8000);
+    window.location.reload();
 }
 
 button_calcular.addEventListener("click",()=>{
-    const altura = Number(input_altura.value);
+    const altura = Number(input_altura.value) / 100;
     const peso = Number(input_peso.value);
 
     if((altura < 0 || altura === 0 || altura === null || altura === undefined) || (peso < 0 || peso === 0 || peso === null || peso === undefined)){
         msg_erro.innerHTML = 'Informe valores válidos para os campos';
-        // msg_erro.style.fontWeight = 'bold';
+        msg_erro.style.fontWeight = 'bold';
         msg_erro.style.display = 'block';
         msg_erro.style.animation = 'Popover .8s ease-in infinite';
 
         setTimeout(()=>{
             msg_erro.style.display = 'none';
-            input_altura.value = "";
-            input_peso.value = "";
+            input_altura.value = '';
+            input_peso.value = '';
         }, 5000)
 
     } else {
+        container_calculadora.classList.add('hide');
+        container_calculadora.classList.remove('show');
+
+        container_resultado.classList.add('show');
+        container_resultado.classList.remove('hide');
+
         resultado(calcularIMC(altura, peso));
-        input_altura.value = "";
-        input_peso.value = "";  
+        input_altura.value = '';
+        input_peso.value = '';  
     }
-  
-    refreshPage();
 });
+
+button_voltar.addEventListener("click", refreshPage);
