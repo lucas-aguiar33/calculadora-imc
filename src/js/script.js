@@ -112,6 +112,12 @@ const resultado = (callback) => {
     }
 }
 
+function refreshPage(){
+    setTimeout(()=>{
+        window.location.reload();
+    }, 8000);
+}
+
 button_calcular.addEventListener("click",()=>{
     const altura = Number(input_altura.value);
     const peso = Number(input_peso.value);
@@ -133,5 +139,6 @@ button_calcular.addEventListener("click",()=>{
         input_altura.value = "";
         input_peso.value = "";  
     }
-    
+  
+    refreshPage();
 });
