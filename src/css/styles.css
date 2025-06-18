@@ -21,6 +21,7 @@ body {
     padding:30px 25px;
     color:white;
     border-radius:20px;
+    display: none;
 }
 
 .campo_input, .grupo_botoes {
@@ -121,12 +122,8 @@ td {
     left:30%;
 }
 
-.hide {
-    display: none;
-}
-
-.show {
-    display: block;
+.ativo {
+    display: block !important;
 }
 
 

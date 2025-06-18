@@ -140,11 +140,8 @@ button_calcular.addEventListener("click",()=>{
         }, 5000)
 
     } else {
-        container_calculadora.classList.add('hide');
-        container_calculadora.classList.remove('show');
-
-        container_resultado.classList.add('show');
-        container_resultado.classList.remove('hide');
+        container_calculadora.classList.toggle('ativo');
+        container_resultado.classList.toggle('ativo');
 
         resultado(calcularIMC(altura, peso));
         input_altura.value = '';
